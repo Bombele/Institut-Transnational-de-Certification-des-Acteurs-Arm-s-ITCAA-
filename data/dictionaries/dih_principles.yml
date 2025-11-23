@@ -1,1 +1,5 @@
-
+dih_principles:
+  distinction: 0.25        # Principe de distinction entre civils et combattants
+  proportionality: 0.25    # Principe de proportionnalité dans l’usage de la force
+  necessity: 0.25          # Principe de nécessité militaire
+  humanity: 0.25           # Principe d’humanité et de protection
