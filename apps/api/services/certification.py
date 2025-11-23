@@ -35,3 +35,23 @@ def calculate_certification(actor: models.Actor):
     )
 
     return capsule, certification_score
+from services import dih_score, legitimacy, internal_norms
+
+def calculate_certification(actor: models.Actor):
+    dih = dih_score.compute_dih_score(actor)
+    legit = legitimacy.compute_legitimacy_score(actor)
+    norms = internal_norms.compute_internal_norms_score(actor)
+
+    # Pondération ajustée : DIH 40%, légitimité 40%, normes internes 20%
+    certification_score = round((dih * 0.4 + legit * 0.4 + norms * 0.2), 2)
+
+    capsule = models.Capsule(
+        actor_id=actor.id,
+        narrative=f"Certificación calculada para {actor.name} con normas internas",
+        legitimacy_score=legit,
+        dih_score=dih,
+        certification_score=certification_score,
+        version="v2.0",
+        validations=[{"source": "ITCAA", "status": "calculado"}],
+    )
+    return capsule, certification_score
