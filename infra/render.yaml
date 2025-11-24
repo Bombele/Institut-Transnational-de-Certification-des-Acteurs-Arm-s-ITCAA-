@@ -1,1 +1,35 @@
+services:
+  - type: web
+    name: itcaa-api
+    env: docker
+    plan: starter
+    dockerfilePath: infra/docker/Dockerfile.api
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://itcaa:itcaa_pass@itcaa-db:5432/itcaa_db
+    healthCheckPath: /docs
 
+  - type: web
+    name: itcaa-demo
+    env: docker
+    plan: starter
+    dockerfilePath: infra/docker/Dockerfile.demo
+    autoDeploy: true
+    envVars:
+      - key: DATABASE_URL
+        value: postgresql://itcaa:itcaa_pass@itcaa-db:5432/itcaa_db
+    healthCheckPath: /docs
+
+  - type: pserv
+    name: itcaa-db
+    env: postgres
+    plan: starter
+    autoDeploy: true
+    envVars:
+      - key: POSTGRES_USER
+        value: itcaa
+      - key: POSTGRES_PASSWORD
+        value: itcaa_pass
+      - key: POSTGRES_DB
+        value: itcaa_db
