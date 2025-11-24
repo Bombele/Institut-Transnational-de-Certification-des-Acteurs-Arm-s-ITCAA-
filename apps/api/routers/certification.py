@@ -49,3 +49,60 @@ def calculate_certification(actor_id: int, db: Session = Depends(get_db)):
         "certification_score": certification_score,
         "capsule_id": capsule.id,
   }
+from fastapi import APIRouter, Request
+from apps.api.i18n import get_lang, load_locale
+
+router = APIRouter(prefix="/certification", tags=["certification"])
+
+# Exemple endpoint: capsule de certification d'un acteur
+@router.get("/{actor_id}/capsule")
+def get_capsule(actor_id: int, request: Request):
+    lang = get_lang(request)
+    t = load_locale(lang)
+
+    # ⚖️ Exemple de calcul (ici simulé, normalement basé sur DB et scoring DIH/légitimité/normes)
+    capsule = {
+        "actor_id": actor_id,
+        "scores": {
+            "dih": 0.82,
+            "legitimacy": 0.78,
+            "norms": 0.71
+        },
+        "certification_score": 0.77,
+        "version": "v2.0"
+    }
+
+    # 🔤 Labels traduits
+    labels = {
+        "dih": t["protocol.dih.title"],
+        "legitimacy": t["protocol.legitimacy.title"],
+        "norms": t["protocol.internal_norms.title"],
+        "score": t["capsule.score"],
+        "version": t["capsule.version"],
+        "validations": t["capsule.validations"]
+    }
+
+    return {
+        "labels": labels,
+        "capsule": capsule,
+        "lang": lang
+    }
+
+
+# Exemple endpoint: liste des acteurs certifiés
+@router.get("/actors")
+def list_actors(request: Request):
+    lang = get_lang(request)
+    t = load_locale(lang)
+
+    # ⚖️ Exemple de données (normalement récupérées depuis la DB)
+    actors = [
+        {"id": 1, "name": "Forces de Résistance du Kivu", "score": 0.77},
+        {"id": 2, "name": "Movimiento Humanitario Andino", "score": 0.81}
+    ]
+
+    return {
+        "title": t["nav.actors"],
+        "actors": actors,
+        "lang": lang
+    }
