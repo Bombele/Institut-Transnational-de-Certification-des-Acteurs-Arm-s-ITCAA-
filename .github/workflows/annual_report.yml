@@ -1,0 +1,11 @@
+.github/
+ └── workflows/
+      └── annual_report.yml   ← pipeline GitHub Actions
+apps/
+ └── api/
+      └── jobs/
+           └── generate_annual_report.py  ← script de génération
+templates/
+ └── annual_report.html
+data/
+ └── i18n/ (EN, FR, ES, AR, RU, ZH, LN, SW, PT)
