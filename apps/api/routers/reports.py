@@ -143,3 +143,39 @@ def export_csv(db: Session = Depends(get_db)):
         writer.writerow([a.id, a.name, a.type.value, a.region.value, a.status.value, ";".join(a.aliases or []), ";".join(a.languages or [])])
     output.seek(0)
     return StreamingResponse(output, media_type="text/csv", headers={"Content-Disposition":"attachment; filename=actors.csv"})
+from fastapi import APIRouter, Depends, Request
+from sqlalchemy.orm import Session
+from fastapi.templating import Jinja2Templates
+from apps.api.database import SessionLocal
+from apps.api.models_cartography import Actor, InfluenceZone, ActorRelation
+from apps.api.services.protocols_service import compute_scores_from_db
+from apps.api.services.pdf_service import render_pdf
+from apps.api.i18n import get_lang, load_locale
+
+router = APIRouter(prefix="/reports", tags=["reports"])
+templates = Jinja2Templates(directory="templates")
+
+def get_db():
+    db = SessionLocal()
+    try: yield db
+    finally: db.close()
+
+@router.get("/actor/{actor_id}/pdf")
+def actor_report_pdf(actor_id: int, request: Request, db: Session = Depends(get_db)):
+    lang = get_lang(request); t = load_locale(lang)
+    actor = db.query(Actor).get(actor_id)
+    if not actor: return {"error":"not_found"}
+    zones = db.query(InfluenceZone).filter_by(actor_id=actor_id).all()
+    relations = db.query(ActorRelation).filter_by(source_actor_id=actor_id).all()
+    scores = compute_scores_from_db(db, actor_id)
+
+    html_content = templates.get_template("report.html").render(
+        title=f"{t['app.title']} – Rapport de certification",
+        actor={"name": actor.name, "type": actor.type.value, "region": actor.region.value, "status": actor.status.value},
+        scores=scores,
+        zones=zones,
+        relations=relations,
+        labels=t,
+        lang=lang
+    )
+    return render_pdf(html_content, filename=f"actor_{actor_id}_report.pdf")
