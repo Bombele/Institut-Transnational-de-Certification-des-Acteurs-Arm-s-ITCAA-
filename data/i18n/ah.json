@@ -1,0 +1,30 @@
+{
+  "app.title": "ITCAA – 认证",
+  "nav.certification": "认证",
+  "nav.actors": "行为体",
+
+  "protocol.dih.title": "国际人道法",
+  "protocol.dih.distinction": "区分",
+  "protocol.dih.proportionality": "比例原则",
+  "protocol.dih.necessity": "军事必要性",
+  "protocol.dih.humanity": "人道主义",
+
+  "protocol.legitimacy.title": "合法性",
+  "legitimacy.community_recognition": "社区认可",
+  "legitimacy.non_discrimination": "不歧视",
+  "legitimacy.internal_accountability": "内部问责",
+  "legitimacy.traceability": "可追溯性",
+
+  "protocol.internal_norms.title": "内部规范",
+  "norms.code_of_conduct": "行为准则",
+  "norms.community_charter": "社区宪章",
+  "norms.humanitarian_commitments": "人道主义承诺",
+
+  "capsule.score": "认证评分",
+  "capsule.version": "版本",
+  "capsule.validations": "验证",
+
+  "errors.not_found": "资源未找到",
+  "errors.validation": "验证错误",
+  "errors.server": "服务器内部错误"
+}
