@@ -155,3 +155,56 @@ def get_report(actor_id: int, request: Request):
         "version": scores["version"],
         "lang": lang
     }
+# apps/api/routers/certification.py
+import yaml
+from pathlib import Path
+from fastapi import APIRouter, Request
+from apps.api.i18n import get_lang, load_locale
+
+router = APIRouter(prefix="/certification", tags=["certification"])
+
+def load_protocol(name: str):
+    data = yaml.safe_load(Path(f"protocols/{name}.yml").read_text(encoding="utf-8"))
+    return data["indicators"], data["thresholds"], data["version"]
+
+def aggregate(values, weights):
+    return sum(v*w for v, w in zip(values, weights))
+
+def compute_from_protocols(actor_id: int):
+    # Demo: valeurs simulées par indicateur (brancher DB/ML ensuite)
+    dih_inds, dih_thr, version = load_protocol("dih")
+    leg_inds, leg_thr, _ = load_protocol("legitimacy")
+    nor_inds, nor_thr, _ = load_protocol("norms")
+
+    dih_values = [0.82]*len(dih_inds); dih_weights = [i["weight"] for i in dih_inds]
+    leg_values = [0.78]*len(leg_inds); leg_weights = [i["weight"] for i in leg_inds]
+    nor_values = [0.71]*len(nor_inds); nor_weights = [i["weight"] for i in nor_inds]
+
+    dih = aggregate(dih_values, dih_weights)
+    leg = aggregate(leg_values, leg_weights)
+    nor = aggregate(nor_values, nor_weights)
+    total = round((dih + leg + nor)/3, 4)
+
+    # Statut global: moyenne des seuils (simplifié)
+    certified_cut = (dih_thr["certified"] + leg_thr["certified"] + nor_thr["certified"]) / 3
+    provisional_cut = (dih_thr["provisional"] + leg_thr["provisional"] + nor_thr["provisional"]) / 3
+    status = "certified" if total >= certified_cut else ("provisional" if total >= provisional_cut else "not_certified")
+
+    return {"dih": dih, "legitimacy": leg, "norms": nor, "total": total, "status": status, "version": version}
+
+@router.get("/{actor_id}/report")
+def report(actor_id: int, request: Request):
+    lang = get_lang(request); t = load_locale(lang)
+    s = compute_from_protocols(actor_id)
+    return {
+        "actor_id": actor_id,
+        "scores": {
+            t["protocol.dih.title"]: round(s["dih"], 2),
+            t["protocol.legitimacy.title"]: round(s["legitimacy"], 2),
+            t["protocol.internal_norms.title"]: round(s["norms"], 2),
+            t["capsule.score"]: round(s["total"], 2)
+        },
+        "status": s["status"],
+        "version": s["version"],
+        "lang": lang
+    }
