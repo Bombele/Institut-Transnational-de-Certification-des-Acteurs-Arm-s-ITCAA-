@@ -28,3 +28,14 @@
   "errors.validation": "Erreur de validation",
   "errors.server": "Erreur interne du serveur"
 }
+{
+  "app.title": "ITCAA",
+  "actor.name": "Nom de l'acteur",
+  "actor.type": "Type d'acteur",
+  "actor.region": "Région",
+  "actor.status": "Statut",
+  "capsule.score": "Score de certification",
+  "protocol.dih.title": "Droit international humanitaire",
+  "protocol.legitimacy.title": "Légitimité",
+  "protocol.internal_norms.title": "Normes internes"
+}
