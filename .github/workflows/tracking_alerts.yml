@@ -1,0 +1,25 @@
+# .github/workflows/tracking_alerts.yml
+name: Tracking Alerts
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # chaque jour à 6h UTC
+  workflow_dispatch:
+
+jobs:
+  check-expirations:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run tracking checks
+        run: python apps/api/jobs/check_expirations.py
