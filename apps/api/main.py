@@ -18,3 +18,14 @@ app = FastAPI(title="ITCAA API")
 app.include_router(certification.router)
 app.include_router(econ.router)
 app.include_router(reports.router)
+# apps/api/main.py
+from fastapi import FastAPI
+from apps.api.routers import certification, actors, clients_partners, risks, econ, reports
+
+app = FastAPI(title="ITCAA API")
+app.include_router(certification.router)
+app.include_router(actors.router)
+app.include_router(clients_partners.router)
+app.include_router(risks.router)
+app.include_router(econ.router)
+app.include_router(reports.router)
