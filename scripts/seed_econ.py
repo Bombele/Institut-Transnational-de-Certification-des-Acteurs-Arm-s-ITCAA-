@@ -27,3 +27,4 @@ def run():
 
 if __name__ == "__main__":
     run()
+python scripts/seed_econ.py
