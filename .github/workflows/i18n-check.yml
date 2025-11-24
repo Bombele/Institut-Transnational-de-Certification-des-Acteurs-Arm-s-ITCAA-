@@ -1,0 +1,32 @@
+name: I18N Consistency Check
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  check-i18n:
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Récupérer le code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Installer Python
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.10"
+
+      # 3. Installer les dépendances (si besoin)
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      # 4. Exécuter le script de vérification i18n
+      - name: Run i18n check
+        run: |
+          python scripts/check_i18n.py
