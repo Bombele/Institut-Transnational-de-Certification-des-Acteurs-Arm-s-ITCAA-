@@ -1,0 +1,15 @@
+version: v1.0
+title: "Internal Norms"
+indicators:
+  - key: code_of_conduct
+    description: "Adoption of a code of conduct"
+    weight: 0.40
+  - key: community_charter
+    description: "Existence of a community charter"
+    weight: 0.30
+  - key: humanitarian_commitments
+    description: "Commitments to humanitarian principles"
+    weight: 0.30
+thresholds:
+  certified: 0.65
+  provisional: 0.50
