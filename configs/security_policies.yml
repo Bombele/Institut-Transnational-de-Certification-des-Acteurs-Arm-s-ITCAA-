@@ -1,0 +1,20 @@
+# configs/security_policies.yml
+infra:
+  standards: ["ISO27001", "SOC2"]
+  tls: "1.3"
+  backups: { encrypted: true, frequency: "daily", retention: "30d" }
+
+access:
+  mfa_required_roles: ["admin", "jurist", "auditor"]
+  rbac_matrix:
+    admin: ["*"]
+    jurist: ["read:actors","write:evidence","read:reports"]
+    tech: ["read:reports","write:system"]
+    diplomat: ["read:reports","read:recognitions"]
+    auditor: ["read:*","write:audit"]
+    public: ["read:public"]
+
+monitoring:
+  ids_ips: true
+  pen_test_frequency: "quarterly"
+  cert_cooperation: ["CERT-Africa","CERT-EU","OAS-CERT"]
