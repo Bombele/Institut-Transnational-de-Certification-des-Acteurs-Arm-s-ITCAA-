@@ -52,3 +52,15 @@ def get_lang(request: Request) -> str:
             return code
 
     return "en"
+# apps/api/i18n.py
+import json
+from pathlib import Path
+
+def load_locale(lang: str):
+    path = Path(f"data/i18n/{lang}.json")
+    if not path.exists():
+        path = Path("data/i18n/en.json")  # fallback
+    return json.loads(path.read_text(encoding="utf-8"))
+
+def get_lang(request):
+    return request.query_params.get("lang") or "en"
