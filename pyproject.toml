@@ -1,1 +1,44 @@
+[tool.poetry]
+name = "itcaa"
+version = "0.1.0"
+description = "Institut Transnational de Certification des Acteurs Armés – Justice digitale et certification DIH"
+authors = ["Camille Bombele Liyama <camille@example.com>"]
+license = "MIT"
+readme = "README.md"
+packages = [
+    { include = "apps" },
+    { include = "scripts" },
+    { include = "data" }
+]
 
+[tool.poetry.dependencies]
+python = "^3.10"
+fastapi = "^0.115.0"
+uvicorn = "^0.32.0"
+sqlalchemy = "^2.0.36"
+psycopg2-binary = "^2.9.9"
+shapely = "^2.0.6"
+pyyaml = "^6.0.2"
+pydantic = "^2.9.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.3"
+httpx = "^0.27.2"
+black = "^24.10.0"
+isort = "^5.13.2"
+mypy = "^1.12.0"
+
+[build-system]
+requires = ["poetry-core>=1.9.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.pytest.ini_options]
+testpaths = ["apps/api/tests"]
+addopts = "-v --disable-warnings"
+
+[tool.black]
+line-length = 88
+target-version = ['py310']
+
+[tool.isort]
+profile = "black"
