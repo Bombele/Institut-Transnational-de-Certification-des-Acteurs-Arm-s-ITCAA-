@@ -16,3 +16,22 @@ indicators:
 thresholds:
   certified: 0.75
   provisional: 0.60
+# protocols/dih.yml
+version: v1.0
+title: "International Humanitarian Law"
+indicators:
+  - key: distinction
+    description: "Respect of distinction between civilians and combatants"
+    weight: 0.25
+  - key: proportionality
+    description: "Avoidance of excessive collateral damage"
+    weight: 0.25
+  - key: necessity
+    description: "Use of force only when militarily necessary"
+    weight: 0.25
+  - key: humanity
+    description: "Respect for human dignity"
+    weight: 0.25
+thresholds:
+  certified: 0.75
+  provisional: 0.60
