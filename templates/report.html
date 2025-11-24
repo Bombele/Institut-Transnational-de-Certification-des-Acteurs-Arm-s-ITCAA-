@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ title }}</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    h1 { color: #2c3e50; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    th { background-color: #f4f4f4; }
+  </style>
+</head>
+<body>
+  <h1>{{ title }}</h1>
+  <p><strong>{{ labels["actor.name"] }}:</strong> {{ actor.name }}</p>
+  <p><strong>{{ labels["actor.type"] }}:</strong> {{ actor.type }}</p>
+  <p><strong>{{ labels["actor.region"] }}:</strong> {{ actor.region }}</p>
+  <p><strong>{{ labels["actor.status"] }}:</strong> {{ actor.status }}</p>
+
+  <h2>{{ labels["capsule.score"] }}</h2>
+  <table>
+    <tr><th>{{ labels["protocol.dih.title"] }}</th><td>{{ scores.dih }}</td></tr>
+    <tr><th>{{ labels["protocol.legitimacy.title"] }}</th><td>{{ scores.legitimacy }}</td></tr>
+    <tr><th>{{ labels["protocol.internal_norms.title"] }}</th><td>{{ scores.norms }}</td></tr>
+    <tr><th>Total</th><td>{{ scores.total }}</td></tr>
+    <tr><th>Status</th><td>{{ scores.status }}</td></tr>
+  </table>
+
+  <h2>Zones d’influence</h2>
+  <ul>
+    {% for z in zones %}
+      <li>{{ z.country }} {% if z.province %} - {{ z.province }}{% endif %}</li>
+    {% endfor %}
+  </ul>
+
+  <h2>Relations</h2>
+  <ul>
+    {% for r in relations %}
+      <li>{{ r.target }} ({{ r.type }})</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>
