@@ -1,0 +1,14 @@
+fastapi==0.115.0
+uvicorn==0.32.0
+sqlalchemy==2.0.36
+psycopg2-binary==2.9.9
+shapely==2.0.6
+pyyaml==6.0.2
+pydantic==2.9.2
+
+# Dépendances de développement (optionnel, à inclure si nécessaire)
+pytest==8.3.3
+httpx==0.27.2
+black==24.10.0
+isort==5.13.2
+mypy==1.12.0
