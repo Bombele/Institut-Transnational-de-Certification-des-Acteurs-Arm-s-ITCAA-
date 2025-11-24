@@ -106,3 +106,52 @@ def list_actors(request: Request):
         "actors": actors,
         "lang": lang
     }
+import yaml
+from pathlib import Path
+from fastapi import APIRouter, Request
+from apps.api.i18n import get_lang, load_locale
+
+router = APIRouter(prefix="/certification", tags=["certification"])
+
+# Fonction utilitaire pour charger un protocole YAML
+def load_protocol(name: str):
+    path = Path("protocols") / f"{name}.yml"
+    with open(path, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f)
+
+# Calcul simple des scores (exemple simulé)
+def compute_scores(actor_id: int):
+    dih = load_protocol("dih")
+    legitimacy = load_protocol("legitimacy")
+    norms = load_protocol("norms")
+
+    # ⚖️ Exemple : valeurs simulées pour chaque indicateur
+    results = {
+        "dih": sum(ind["weight"] * 0.82 for ind in dih["indicators"]),
+        "legitimacy": sum(ind["weight"] * 0.78 for ind in legitimacy["indicators"]),
+        "norms": sum(ind["weight"] * 0.71 for ind in norms["indicators"]),
+    }
+    total = (results["dih"] + results["legitimacy"] + results["norms"]) / 3
+    status = "certified" if total >= 0.75 else "provisional" if total >= 0.6 else "not_certified"
+
+    return {**results, "total": total, "status": status, "version": dih["version"]}
+
+@router.get("/{actor_id}/report")
+def get_report(actor_id: int, request: Request):
+    lang = get_lang(request)
+    t = load_locale(lang)
+
+    scores = compute_scores(actor_id)
+
+    return {
+        "actor_id": actor_id,
+        "scores": {
+            t["protocol.dih.title"]: round(scores["dih"], 2),
+            t["protocol.legitimacy.title"]: round(scores["legitimacy"], 2),
+            t["protocol.internal_norms.title"]: round(scores["norms"], 2),
+            t["capsule.score"]: round(scores["total"], 2)
+        },
+        "status": scores["status"],
+        "version": scores["version"],
+        "lang": lang
+    }
