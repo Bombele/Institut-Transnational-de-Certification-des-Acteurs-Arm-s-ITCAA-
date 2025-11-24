@@ -1,0 +1,30 @@
+{
+  "app.title": "المعهد الدولي لتصديق الفاعلين المسلحين – الشهادة",
+  "nav.certification": "التصديق",
+  "nav.actors": "الفاعلون",
+
+  "protocol.dih.title": "القانون الدولي الإنساني",
+  "protocol.dih.distinction": "التمييز",
+  "protocol.dih.proportionality": "التناسب",
+  "protocol.dih.necessity": "الضرورة العسكرية",
+  "protocol.dih.humanity": "الإنسانية",
+
+  "protocol.legitimacy.title": "الشرعية",
+  "legitimacy.community_recognition": "الاعتراف المجتمعي",
+  "legitimacy.non_discrimination": "عدم التمييز",
+  "legitimacy.internal_accountability": "المساءلة الداخلية",
+  "legitimacy.traceability": "إمكانية التتبع",
+
+  "protocol.internal_norms.title": "المعايير الداخلية",
+  "norms.code_of_conduct": "مدونة السلوك",
+  "norms.community_charter": "الميثاق المجتمعي",
+  "norms.humanitarian_commitments": "الالتزامات الإنسانية",
+
+  "capsule.score": "درجة التصديق",
+  "capsule.version": "الإصدار",
+  "capsule.validations": "التحقق",
+
+  "errors.not_found": "المورد غير موجود",
+  "errors.validation": "خطأ في التحقق",
+  "errors.server": "خطأ داخلي في الخادم"
+}
