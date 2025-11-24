@@ -1,0 +1,15 @@
+# configs/actors_taxonomy.yml
+gane_examples:
+  - name: "FARC dissidents"; region: "americas"; aliases: ["GAOR-FARC"]
+  - name: "Al-Shabaab"; region: "africa"
+  - name: "Houthis"; region: "mena"
+pmc_examples:
+  - name: "Academi (Blackwater)"; region: "americas"
+  - name: "Wagner Group"; region: "europe"
+  - name: "G4S"; region: "global"
+types:
+  - key: "gane"; label: "Groupe armé non étatique"
+  - key: "pmc"; label: "Société militaire privée"
+  - key: "militia"; label: "Milice"
+  - key: "hybrid"; label: "Organisation hybride"
+regions: ["africa","americas","asia","europe","mena","oceania","global"]
