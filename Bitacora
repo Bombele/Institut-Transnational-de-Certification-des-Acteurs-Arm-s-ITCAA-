@@ -14,3 +14,16 @@
 - Ajout de badges colorés pour statut/type (accessibles)
 - Cache léger (ETag/Last-Modified) pour GeoJSON
 - Tests d’accessibilité (WCAG AA) et RTL pour arabe
+# Bitácora – Interface interactive ITCAA
+
+## 2025-11-24
+- Ajout mode hors-ligne: préchargement GeoJSON par région, cache local
+- Ajout recherche avancée client: filtres instantanés, tri dynamique
+- Mise à jour README: modules, raisons d’usage JS
+- Tests initiaux sur dataset Afrique et MENA
+
+## Prochaines étapes
+- Intégrer IndexedDB pour cache plus robuste
+- Ajouter pagination client progressive
+- Synchroniser cache avec exports CSV/JSON
+- Vérifier compatibilité mobile/tablette
