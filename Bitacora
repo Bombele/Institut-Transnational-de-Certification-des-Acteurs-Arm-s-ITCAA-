@@ -34,3 +34,9 @@
 - 🧠 Corrección de imports y validación local con `uvicorn`
 - 🚀 Preparación para despliegue estable en Render
 - 🪶 Acto de memoria institucional y alineación con estándares internacionales
+## 🔧 Jalón técnico – Configuración de entorno para Render
+
+- 🧠 Añadido `PYTHONPATH=src` para reconocimiento de módulos
+- 🧾 Corrección del `startCommand` con ruta completa
+- 🚀 Despliegue relanzado con estructura validada
+- 🪶 Acto de memoria técnica y diplomática
