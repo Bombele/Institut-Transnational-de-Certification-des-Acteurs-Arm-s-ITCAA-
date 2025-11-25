@@ -1,0 +1,33 @@
+<!-- templates/actors_list.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>Acteurs</h1>
+form method="get" action="/ui/actors">
+  <input type="hidden" name="lang" value="{{ lang }}">
+  <label>Région <select name="region">...options...</select></label>
+  <label>Type <select name="type">...options...</select></label>
+  <label>Statut <select name="status">...options...</select></label>
+  <label>Recherche <input id="qInput" type="text" name="q" value="{{ filters.q or '' }}"></label>
+  <button type="submit">Filtrer</button>
+</form>
+
+<p>Total: {{ total }}</p>
+<input id="clientFilter" type="text" placeholder="Filtre rapide client...">
+<ul id="actorList">
+  {% for a in actors %}
+    <li data-name="{{ a.name|lower }}"><a href="/ui/actors/{{ a.id }}?lang={{ lang }}">{{ a.name }}</a> — {{ a.type.value }} — {{ a.region.value }}</li>
+  {% endfor %}
+</ul>
+<div>
+  {% if page > 1 %}<a href="/ui/actors?lang={{ lang }}&page={{ page-1 }}&per_page={{ per_page }}">← Précédent</a>{% endif %}
+  {% if (page * per_page) < total %}<a href="/ui/actors?lang={{ lang }}&page={{ page+1 }}&per_page={{ per_page }}">Suivant →</a>{% endif %}
+</div>
+<script>
+  document.getElementById('clientFilter').addEventListener('input', (e) => {
+    const q = e.target.value.toLowerCase();
+    document.querySelectorAll('#actorList li').forEach(li => {
+      li.style.display = li.dataset.name.includes(q) ? '' : 'none';
+    });
+  });
+</script>
+{% endblock %}
