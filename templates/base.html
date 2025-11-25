@@ -1,0 +1,33 @@
+<!-- templates/base.html -->
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="utf-8">
+  <title>{{ t["app.title"] }}</title>
+  <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="/ui/?lang={{ lang }}">Accueil</a>
+      <a href="/ui/map?lang={{ lang }}">Cartographie</a>
+      <a href="/ui/actors?lang={{ lang }}">Acteurs</a>
+      <a href="/ui/reports?lang={{ lang }}">Rapports</a>
+      <a href="/ui/governance?lang={{ lang }}">Gouvernance</a>
+      <a href="/ui/lexcivic?lang={{ lang }}">LexCivic</a>
+      <select id="langSelect">
+        <option value="fr" {% if lang=='fr' %}selected{% endif %}>FR</option>
+        <option value="en" {% if lang=='en' %}selected{% endif %}>EN</option>
+        <option value="es" {% if lang=='es' %}selected{% endif %}>ES</option>
+        <option value="ar" {% if lang=='ar' %}selected{% endif %}>AR</option>
+        <option value="ru" {% if lang=='ru' %}selected{% endif %}>RU</option>
+        <option value="zh" {% if lang=='zh' %}selected{% endif %}>ZH</option>
+      </select>
+    </nav>
+  </header>
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+  <script src="/static/app.js"></script>
+</body>
+  </html>
