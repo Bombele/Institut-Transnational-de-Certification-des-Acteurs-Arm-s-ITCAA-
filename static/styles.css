@@ -1,0 +1,11 @@
+/* static/styles.css */
+body { font-family: system-ui, Arial, sans-serif; margin: 0; color: #1f2a44; background: #fff; }
+header nav { display:flex; gap:12px; align-items:center; padding:10px 16px; background:#f7f9fc; border-bottom:1px solid #e3e8ef; }
+a { color:#0b5ed7; text-decoration:none; }
+a:hover { text-decoration:underline; }
+h1,h2 { color:#1f2a44; }
+label { margin-right:12px; display:inline-block; }
+button { background:#0b5ed7; color:#fff; border:none; padding:8px 12px; cursor:pointer; }
+button:hover { background:#094eaf; }
+.show-focus :focus { outline:2px solid #0b5ed7; outline-offset:2px; }
+#map { border:1px solid #e3e8ef; border-radius:6px; }
