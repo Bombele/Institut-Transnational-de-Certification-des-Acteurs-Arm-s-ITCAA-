@@ -27,3 +27,10 @@
 - Ajouter pagination client progressive
 - Synchroniser cache avec exports CSV/JSON
 - Vérifier compatibilité mobile/tablette
+## 🧭 Jalón técnico – Migración hacia `src/`
+
+- 🔧 Reestructuración completa de la arquitectura técnica hacia `src/`
+- 📦 Consolidación de módulos: routers, services, models, tests
+- 🧠 Corrección de imports y validación local con `uvicorn`
+- 🚀 Preparación para despliegue estable en Render
+- 🪶 Acto de memoria institucional y alineación con estándares internacionales
