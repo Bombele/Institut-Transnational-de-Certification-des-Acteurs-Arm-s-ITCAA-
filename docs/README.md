@@ -92,3 +92,23 @@ Interface neutre, multilingue et accessible, avec SSR pour la stabilité et une 
 - Carte interactive (Leaflet) et filtres dynamiques
 - Meilleure UX (sélecteur de langue, filtrage client, feedback)
 - Tout reste transparent: données servies par API, JS sans frameworks lourds
+# ITCAA – Interface interactive (FastAPI + Jinja2 + JavaScript)
+
+## Nouveautés
+- Mode hors-ligne: préchargement des GeoJSON par région, cache local pour continuité en cas de coupure réseau.
+- Recherche avancée côté client: filtrage instantané par nom, type, statut, région; tri par score ou alphabétique.
+
+## Modules
+- Accueil: sélection de langue, navigation
+- Cartographie: Leaflet + filtres dynamiques, export CSV/JSON, cache hors-ligne
+- Acteurs: liste SSR + recherche client, tri dynamique
+- Certification: soumission + suivi
+- Rapports: bibliothèque multilingue
+- Gouvernance: conseil, alliances, transparence
+- LexCivic: contributions citoyennes
+
+## Pourquoi JavaScript
+- Carte interactive (Leaflet)
+- Mode hors-ligne (LocalStorage/IndexedDB)
+- Recherche avancée client
+- UX améliorée sans frameworks lourds
