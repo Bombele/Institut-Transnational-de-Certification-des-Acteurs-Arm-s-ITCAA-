@@ -40,3 +40,9 @@
 - 🧾 Corrección del `startCommand` con ruta completa
 - 🚀 Despliegue relanzado con estructura validada
 - 🪶 Acto de memoria técnica y diplomática
+## 🔧 Jalón technique – Résolution du conflit de nom GitHub
+
+- 🧾 Conflit détecté entre `deploy.yml` et `render.yaml`
+- 🧠 Édition directe de `render.yaml` pour conformité Render
+- 🧹 Suppression de `deploy.yml` pour éviter confusion
+- 🚀 Déploiement relancé avec configuration stabilisée
