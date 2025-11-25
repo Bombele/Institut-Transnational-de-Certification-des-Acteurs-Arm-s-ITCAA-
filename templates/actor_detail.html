@@ -1,0 +1,19 @@
+<!-- templates/actor_detail.html -->
+{% extends "base.html" %}
+{% block content %}
+<h1>{{ actor.name }}</h1>
+<p>Type: {{ actor.type.value }} | Région: {{ actor.region.value }} | Statut: {{ actor.status.value }}</p>
+<h2>{{ t["capsule.score"] }}</h2>
+<ul>
+  <li>{{ t["protocol.dih.title"] }}: {{ "%.2f"|format(scores.dih) }}</li>
+  <li>{{ t["protocol.legitimacy.title"] }}: {{ "%.2f"|format(scores.legitimacy) }}</li>
+  <li>{{ t["protocol.internal_norms.title"] }}: {{ "%.2f"|format(scores.norms) }}</li>
+  <li>Total: {{ "%.2f"|format(scores.total) }} — {{ scores.status }}</li>
+</ul>
+<h2>Zones d’influence</h2>
+<ul>{% for z in zones %}<li>{{ z.country }}{% if z.province %} — {{ z.province }}{% endif %}</li>{% endfor %}</ul>
+<p>GeoJSON: <a href="/cartography/actors/{{ actor.id }}/geojson">Télécharger</a></p>
+<h2>Relations</h2>
+<ul>{% for r in relations %}<li>{{ r.target_name }} ({{ r.relation_type.value }})</li>{% endfor %}</ul>
+<p><a href="/reports/actor/{{ actor.id }}/pdf?lang={{ lang }}">Télécharger le rapport PDF</a></p>
+{% endblock %}
