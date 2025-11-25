@@ -1,0 +1,16 @@
+# Bitácora – Interface interactive ITCAA
+
+## 2025-11-24
+- Ajout layout commun (base.html), CSS institutionnel minimal
+- Carte interactive (Leaflet) avec filtres région/type + export CSV/JSON synchronisé
+- Sélecteur de langue global (JS), filtrage client pour liste d’acteurs
+- Fiche acteur: scores DIH, relations, zones d’influence, lien GeoJSON et PDF
+- Bibliothèque des rapports et page gouvernance (conseil, alliances)
+- LexCivic: soumission citoyenne SSR et tri client
+- README mis à jour (objectifs, modules, raisons JS léger)
+
+## Prochaines étapes
+- Pagination côté client progressive (si dataset > 2k entrées)
+- Ajout de badges colorés pour statut/type (accessibles)
+- Cache léger (ETag/Last-Modified) pour GeoJSON
+- Tests d’accessibilité (WCAG AA) et RTL pour arabe
