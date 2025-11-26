@@ -112,3 +112,17 @@
 - 🧠 PYTHONPATH intégré dans `startCommand`
 - 🚀 Déploiement stabilisé et prêt pour production
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Stabilisation du fichier `render.yaml`
+
+- ✅ Unification du service `itcaa-api` avec configuration claire
+- 📦 Utilisation de `$PORT` pour éviter les timeouts Render
+- 🧠 Intégration de `PYTHONPATH=src` dans `startCommand`
+- 🚀 Base PostgreSQL configurée pour déploiement cloud
+- 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Nettoyage du fichier `requirements.txt`
+
+- ❌ Ancien fichier contenait doublons et désordre
+- ✅ Consolidation des dépendances principales et de développement
+- 📦 Versions fixées pour stabilité
+- 🧠 Modules NLP alignés avec Spacy
+- 🪶 Acte de mémoire technique et diplomatique
