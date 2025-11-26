@@ -3,6 +3,7 @@
 ![Structure Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg)
 ![Annual Report](https://github.com/Bombele/ITCAA/actions/workflows/annual_report.yml/badge.svg)
 ![Predeploy Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main&event=push)
+![Deploy ITCAA API](https://github.com/Bombele/ITCAA/actions/workflows/deploy.yml/badge.svg?branch=main)
 ---
 
 ## 🎯 Vision
