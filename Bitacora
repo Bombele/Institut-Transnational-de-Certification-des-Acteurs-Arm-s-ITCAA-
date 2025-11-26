@@ -83,3 +83,17 @@
 - 📦 Utilisation propre de `SessionLocal`, `Actor`, `ActorType`, `Region`
 - 🧪 Routes GET, POST et GET/{id} stabilisées
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Refactorisation du module `models_actors.py`
+
+- ✅ Normalisation des `enum` avec héritage `str` pour compatibilité FastAPI
+- 📦 Clarification des modèles `Actor`, `Client`, `Partner`, `RiskRegister`
+- 🔗 Relations bidirectionnelles avec `backref`
+- 🧠 Ajout de commentaires explicatifs pour chaque bloc
+- 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Stabilisation du module `database.py`
+
+- ✅ Import du `Base` depuis `models_actors.py` pour modularité
+- 📦 Configuration dynamique du moteur selon le type de base
+- 🧠 Session SQLAlchemy prête pour FastAPI
+- 🛠️ Fonction `init_db()` pour création automatique des tables
+- 🪶 Acte de mémoire technique et diplomatique
