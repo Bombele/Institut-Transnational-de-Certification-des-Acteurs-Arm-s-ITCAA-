@@ -61,3 +61,10 @@
 - 🧪 Ajout d’un endpoint `/status` pour introspection
 - 🚀 Point d’entrée stabilisé pour Render et tests locaux
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Script de lancement local
+
+- ✅ Création d’un script `start.sh` pour automatiser le test local
+- 📦 Installation des dépendances et configuration du `PYTHONPATH`
+- 🚀 Lancement de l’API avec Uvicorn
+- 🧪 Test local validé dans Codespaces
+- 🪶 Acte de mémoire technique et diplomatique
