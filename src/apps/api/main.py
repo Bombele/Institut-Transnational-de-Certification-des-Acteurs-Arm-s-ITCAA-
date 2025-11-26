@@ -65,3 +65,66 @@ def status_check():
 
 # Static files (si tu as un dossier /static)
 app.mount("/static", StaticFiles(directory="static"), name="static")
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+# Import des routers
+from apps.api.routers import actors, clients, partners, risk_register
+
+# 📌 Création de l’application FastAPI
+app = FastAPI(
+    title="ITCAA – Institut Transnational de Certification des Acteurs Armés",
+    description="""
+    🌍 ITCAA est une initiative citoyenne et institutionnelle visant à certifier les acteurs armés non étatiques
+    selon leur conformité au Droit International Humanitaire (DIH), leur légitimité institutionnelle et leurs normes internes.
+    
+    Cette API fournit des endpoints pour gérer :
+    - 🎭 Acteurs
+    - 🏛️ Clients
+    - 🤝 Partenaires
+    - ⚠️ Registre des risques
+    
+    Documentation générée automatiquement pour auditabilité et transparence.
+    """,
+    version="1.0.0",
+    contact={
+        "name": "Camille Bombele Liyama",
+        "email": "contact@itcaa.org",
+        "url": "https://github.com/Bombele/ITCAA"
+    },
+    license_info={
+        "name": "MIT",
+        "url": "https://opensource.org/licenses/MIT"
+    }
+)
+
+# 🔓 Configuration CORS
+origins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://itcaa.org",
+    "https://*.itcaa.org"
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,  # Autoriser les domaines front-end
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# 📦 Inclusion des routers
+app.include_router(actors.router)
+app.include_router(clients.router)
+app.include_router(partners.router)
+app.include_router(risk_register.router)
+
+# 🏠 Endpoint racine
+@app.get("/", tags=["Root"])
+def read_root():
+    return {
+        "message": "Bienvenue sur l’API ITCAA 🌍 – Certification citoyenne et institutionnelle",
+        "docs": "/docs",
+        "redoc": "/redoc"
+}
