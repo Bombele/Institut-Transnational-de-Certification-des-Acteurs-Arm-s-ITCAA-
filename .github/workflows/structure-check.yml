@@ -9,6 +9,7 @@ on:
 jobs:
   check-structure:
     runs-on: ubuntu-latest
+
     steps:
       - name: 🔄 Cloner le dépôt
         uses: actions/checkout@v3
@@ -23,3 +24,6 @@ jobs:
 
       - name: 🧪 Vérifier la structure du projet
         run: python check_structure.py
+
+      - name: 🧠 Valider la configuration Render
+        run: python validate_render_config.py
