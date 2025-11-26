@@ -126,3 +126,9 @@
 - 📦 Versions fixées pour stabilité
 - 🧠 Modules NLP alignés avec Spacy
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Positionnement du fichier `.env.example`
+
+- ✅ Placé à la racine du projet pour visibilité et accessibilité
+- 📦 Regroupe les variables d’environnement aux côtés des fichiers de configuration
+- 🧠 Facilite l’onboarding des partenaires et la documentation institutionnelle
+- 🪶 Acte de mémoire technique et diplomatique
