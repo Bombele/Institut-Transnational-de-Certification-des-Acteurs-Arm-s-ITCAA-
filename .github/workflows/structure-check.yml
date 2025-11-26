@@ -27,3 +27,5 @@ jobs:
 
       - name: 🧠 Valider la configuration Render
         run: python validate_render_config.py
+- name: 🚨 Prévalidation du déploiement
+  run: python predeploy_check.py
