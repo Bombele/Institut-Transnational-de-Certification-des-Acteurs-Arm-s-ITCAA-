@@ -203,3 +203,18 @@
 - 🧠 Documentation Swagger et ReDoc enrichie
 - 🚀 API prête pour déploiement institutionnel
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Workflow GitHub Actions Deploy
+
+- ✅ Création de `.github/workflows/deploy.yml`
+- 📦 Intégration du script `predeploy_check.py` avant déploiement
+- 🚀 Déploiement automatique sur Render via API
+- 🔑 Sécurité renforcée avec `RENDER_API_KEY` dans GitHub Secrets
+- 🧠 Transparence et traçabilité CI/CD
+- 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Badge Deploy ITCAA API
+
+- ✅ Badge ajouté dans le README pour le workflow `deploy.yml`
+- 📦 Affiche l’état des déploiements Render en temps réel
+- 🚀 Renforce la transparence et la robustesse CI/CD
+- 🧠 Compatible avec audits institutionnels et reconnaissance internationale
+- 🪶 Acte de mémoire technique et diplomatique
