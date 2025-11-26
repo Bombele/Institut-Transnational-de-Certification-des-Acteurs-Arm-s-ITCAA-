@@ -188,3 +188,18 @@
 - 🧠 Validation automatique, documentation Swagger enrichie
 - 🚀 Préparation à l’auditabilité et à la traçabilité institutionnelle
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – render.yaml corrigé
+
+- ✅ Création d’un fichier `render.yaml` complet pour Render
+- 📦 startCommand corrigé avec PYTHONPATH=src
+- 🧠 Healthcheck configuré sur `/`
+- 🚀 Déploiement automatique activé
+- 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – main.py centralisé
+
+- ✅ Création d’un fichier `main.py` centralisé
+- 📦 Inclusion des routers (actors, clients, partners, risks)
+- 🔓 Configuration CORS pour front-end et domaines ITCAA
+- 🧠 Documentation Swagger et ReDoc enrichie
+- 🚀 API prête pour déploiement institutionnel
+- 🪶 Acte de mémoire technique et diplomatique
