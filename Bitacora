@@ -139,3 +139,10 @@
 - 🧠 Affiche des ✅ ou ❌ avec suggestions claires
 - 🚀 Utilisable avant chaque déploiement ou migration
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Archivage et publication des rapports annuels
+
+- ✅ Workflow enrichi pour générer et archiver les rapports HTML multilingues
+- 📁 Dossier `public/reports/` utilisé comme espace de publication
+- 📦 Compatible avec GitHub Pages ou Render Static Storage
+- 🧠 Prépare la diffusion publique des rapports LexCivic et ITCAA
+- 🪶 Acte de mémoire technique et diplomatique
