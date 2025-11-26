@@ -12,7 +12,7 @@ services:
       - key: SECRET_KEY
         value: "change_this_to_secure_key"
       - key: DATABASE_URL
-        value: "postgresql://user:password@host:port/dbname"
+        value: "postgresql://USERNAME:PASSWORD@HOST:PORT/DBNAME"
       - key: I18N_DEFAULT_LANG
         value: "fr"
       - key: ENABLE_PDF
