@@ -1,11 +1,30 @@
-.github/
- └── workflows/
-      └── annual_report.yml   ← pipeline GitHub Actions
-apps/
- └── api/
-      └── jobs/
-           └── generate_annual_report.py  ← script de génération
-templates/
- └── annual_report.html
-data/
- └── i18n/ (EN, FR, ES, AR, RU, ZH, LN, SW, PT)
+name: Génération du rapport annuel
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "apps/api/jobs/generate_annual_report.py"
+      - "templates/annual_report.html"
+      - "data/i18n/**"
+
+jobs:
+  generate-report:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 🔄 Cloner le dépôt
+        uses: actions/checkout@v3
+
+      - name: 🐍 Installer Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.11"
+
+      - name: 📦 Installer les dépendances
+        run: |
+          pip install -r requirements.txt
+
+      - name: 🧾 Générer le rapport annuel
+        run: |
+          PYTHONPATH=src python apps/api/jobs/generate_annual_report.py
