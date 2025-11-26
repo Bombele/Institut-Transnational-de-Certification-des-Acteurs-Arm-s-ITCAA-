@@ -1,9 +1,20 @@
 # ITCAA – Institut Transnational de Certification des Acteurs Armés
 
-![Structure Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg)
-![Annual Report](https://github.com/Bombele/ITCAA/actions/workflows/annual_report.yml/badge.svg)
+![Structure Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main)
 ![Predeploy Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main&event=push)
 ![Deploy ITCAA API](https://github.com/Bombele/ITCAA/actions/workflows/deploy.yml/badge.svg?branch=main)
+![Annual Report](https://github.com/Bombele/ITCAA/actions/workflows/annual_report.yml/badge.svg)
+
+---
+
+## 🛡️ Conformité technique
+Ce projet est validé par une chaîne CI/CD complète garantissant robustesse, transparence et auditabilité institutionnelle :
+
+- **Structure Check** : vérifie la cohérence des imports, modules et arborescence du projet.  
+- **Predeploy Check** : bloque tout déploiement si `apps` est introuvable ou si `startCommand` est incorrect.  
+- **Deploy ITCAA API** : déclenche et affiche l’état des déploiements automatiques sur Render.  
+- **Annual Report** : génère un rapport institutionnel annuel pour mémoire et transparence.  
+
 ---
 
 ## 🎯 Vision
@@ -14,14 +25,14 @@ La plateforme combine **IA**, **technologies géospatiales** et **documentation 
 ---
 
 ## 🏗️ Architecture
-- **Backend FastAPI** : endpoints pour acteurs, capsules, certification, critères, géo.
-- **Services Python** : calcul des scores DIH, légitimité, normes internes, typologie.
-- **Base de données SQLAlchemy** : stockage des acteurs, engagements, capsules.
-- **Validation Pydantic** : cohérence et auditabilité des données.
-- **Données YAML/JSON** : dictionnaires de principes et indicateurs, seeds initiaux.
-- **Cartographie GeoJSON + Leaflet/Shapely** : contextualisation géographique.
-- **Interfaces Jinja2 + JS léger** : SSR pour stabilité, interactivité minimale (cartes, filtres, langue).
-- **Démo (`apps/demo/`)** : application illustrative avec composants réutilisables.
+- **Backend FastAPI** : endpoints pour acteurs, clients, partenaires, risques.  
+- **Services Python** : calcul des scores DIH, légitimité, normes internes, typologie.  
+- **Base de données SQLAlchemy** : stockage des acteurs, engagements, capsules.  
+- **Validation Pydantic** : cohérence et auditabilité des données.  
+- **Données YAML/JSON** : dictionnaires de principes et indicateurs, seeds initiaux.  
+- **Cartographie GeoJSON + Leaflet/Shapely** : contextualisation géographique.  
+- **Interfaces Jinja2 + JS léger** : SSR pour stabilité, interactivité minimale (cartes, filtres, langue).  
+- **Démo (`apps/demo/`)** : application illustrative avec composants réutilisables.  
 
 👉 Voir [ARCHITECTURE.md](ARCHITECTURE.md) pour plus de détails.
 
@@ -81,3 +92,12 @@ La plateforme combine **IA**, **technologies géospatiales** et **documentation 
 - **Camille Bombele Liyama**  
   - Fondateur et architecte institutionnel  
   - Développeur principal (FastAPI, SQLAlchemy, CI/CD, multilinguisme, i18n)
+
+---
+
+## 📜 Mémoire institutionnelle
+Chaque jalon technique est documenté comme acte de mémoire et d’empowerment citoyen :  
+- Fusion et harmonisation des README multilingues.  
+- Validation automatique des imports et modules via CI/CD.  
+- Déploiement Render avec healthcheck institutionnel.  
+- Intégration
