@@ -218,3 +218,17 @@
 - 🚀 Renforce la transparence et la robustesse CI/CD
 - 🧠 Compatible avec audits institutionnels et reconnaissance internationale
 - 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Predeploy Import Check
+
+- ✅ Ajout d’un workflow GitHub Actions pour vérifier l’importabilité du module `apps`
+- 📦 Blocage automatique si `apps` est introuvable
+- 🚀 Renforce la robustesse CI/CD et évite les erreurs Render
+- 🧠 Transparence et auditabilité institutionnelle
+- 🪶 Acte de mémoire technique et diplomatique
+## 🔧 Jalón technique – Correction du déploiement Render
+
+- ✅ Ajout des fichiers `__init__.py` dans chaque dossier
+- 📦 Correction du `startCommand` avec `PYTHONPATH=src`
+- 🧠 Vérification locale avec Uvicorn
+- 🚀 Déploiement Render validé
+- 🪶 Acte de mémoire technique et diplomatique
