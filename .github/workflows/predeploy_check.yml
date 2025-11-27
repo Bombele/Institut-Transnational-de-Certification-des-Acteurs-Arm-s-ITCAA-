@@ -1,0 +1,30 @@
+name: 🔍 Predeploy Import Check
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  check-imports:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout repository
+        uses: actions/checkout@v3
+
+      - name: 🐍 Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.12"
+
+      - name: 📦 Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: 🚨 Verify apps module import
+        run: |
+          export PYTHONPATH=src
+          python -c "import importlib.util; \
+          spec = importlib.util.find_spec('apps'); \
+          print('✅ apps module found' if spec else '❌ apps module missing'); \
+          assert spec is not None, 'apps module not found, aborting CI/CD'"
