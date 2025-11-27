@@ -2,18 +2,21 @@
 
 ![Structure Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main)
 ![Predeploy Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main&event=push)
+![Predeploy Import Check](https://github.com/Bombele/ITCAA/actions/workflows/predeploy_check.yml/badge.svg?branch=main)
 ![Deploy ITCAA API](https://github.com/Bombele/ITCAA/actions/workflows/deploy.yml/badge.svg?branch=main)
 ![Annual Report](https://github.com/Bombele/ITCAA/actions/workflows/annual_report.yml/badge.svg)
 
 ---
 
-## 🛡️ Conformité technique
-Ce projet est validé par une chaîne CI/CD complète garantissant robustesse, transparence et auditabilité institutionnelle :
+## 🛡️ Conformité technique ITCAA
 
-- **Structure Check** : vérifie la cohérence des imports, modules et arborescence du projet.  
-- **Predeploy Check** : bloque tout déploiement si `apps` est introuvable ou si `startCommand` est incorrect.  
-- **Deploy ITCAA API** : déclenche et affiche l’état des déploiements automatiques sur Render.  
-- **Annual Report** : génère un rapport institutionnel annuel pour mémoire et transparence.  
+| Badge | Workflow | Rôle institutionnel |
+|-------|----------|----------------------|
+| ![Structure Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main) | `structure-check.yml` | Vérifie la cohérence des imports, modules et arborescence |
+| ![Predeploy Check](https://github.com/Bombele/ITCAA/actions/workflows/structure-check.yml/badge.svg?branch=main&event=push) | `structure-check.yml` (push) | Bloque le déploiement si `apps` ou `startCommand` sont incorrects |
+| ![Predeploy Import Check](https://github.com/Bombele/ITCAA/actions/workflows/predeploy_check.yml/badge.svg?branch=main) | `predeploy_check.yml` | Vérifie automatiquement l’importabilité du module `apps` |
+| ![Deploy ITCAA API](https://github.com/Bombele/ITCAA/actions/workflows/deploy.yml/badge.svg?branch=main) | `deploy.yml` | Déploie automatiquement l’API ITCAA sur Render |
+| ![Annual Report](https://github.com/Bombele/ITCAA/actions/workflows/annual_report.yml/badge.svg) | `annual_report.yml` | Génère un rapport institutionnel annuel pour mémoire et transparence |
 
 ---
 
@@ -100,4 +103,16 @@ Chaque jalon technique est documenté comme acte de mémoire et d’empowerment 
 - Fusion et harmonisation des README multilingues.  
 - Validation automatique des imports et modules via CI/CD.  
 - Déploiement Render avec healthcheck institutionnel.  
-- Intégration
+- Intégration des schemas Pydantic pour auditabilité.  
+- Publication annuelle via workflow `annual_report.yml`.  
+- Roadmap technique consolidée pour partenaires et ONG.  
+
+---
+
+## 🗺️ Roadmap technique ITCAA
+
+| Horizon | Jalons techniques | Objectifs institutionnels |
+|---------|------------------|---------------------------|
+| 📅 Court terme (0–6 mois) | - Stabilisation du backend FastAPI<br>- Validation automatique avec Pydantic<br>- CI/CD complet (Structure, Predeploy, Deploy)<br>- Documentation multilingue | Transparence technique et auditabilité immédiate |
+| 📅 Moyen terme (6–18 mois) | - Module de comptabilité institutionnelle<br>- Intégration des données démographiques<br>- Cartographie interactive GeoJSON<br>- Rapports automatiques annuels | Suivi citoyen et impact démographique |
+| 📅 Long terme (18–36 mois) | - Système de scoring DIH/légitimité/normes internes<br>- API ouverte pour ONG et chercheurs<br>- Rapports multilingues (PDF, HTML)<br>- Reconnaissance internationale | Certification citoyenne reconnue et légitimité mondiale |
