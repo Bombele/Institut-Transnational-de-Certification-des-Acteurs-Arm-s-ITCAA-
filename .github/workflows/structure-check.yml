@@ -1,31 +1,70 @@
-name: Vérification de la structure ITCAA
+name: Structure & Tests Check
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+      - feature/ai-offline-module
   pull_request:
-    branches: [main]
+    branches:
+      - main
+      - feature/ai-offline-module
 
 jobs:
-  check-structure:
+  validate-structure-and-tests:
     runs-on: ubuntu-latest
 
     steps:
-      - name: 🔄 Cloner le dépôt
-        uses: actions/checkout@v3
+      - name: 📥 Cloner le dépôt
+        uses: actions/checkout@v4
 
       - name: 🐍 Installer Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: "3.11"
+          python-version: '3.12'
+
+      - name: 📦 Vérifier requirements.txt
+        run: |
+          if [ ! -f requirements.txt ]; then
+            echo "❌ requirements.txt manquant à la racine"
+            exit 1
+          else
+            echo "✅ requirements.txt trouvé"
+          fi
+
+      - name: 📂 Vérifier module IA
+        run: |
+          if [ ! -f src/itcaa_ai_offline/__init__.py ]; then
+            echo "❌ __init__.py manquant dans src/itcaa_ai_offline/"
+            exit 1
+          else
+            echo "✅ Module itcaa_ai_offline correctement structuré"
+          fi
+
+      - name: 🧪 Vérifier dossier tests
+        run: |
+          if [ ! -d tests ]; then
+            echo "❌ Dossier tests/ manquant"
+            exit 1
+          else
+            echo "✅ Dossier tests/ trouvé"
+          fi
 
       - name: 📦 Installer les dépendances
-        run: pip install -r requirements.txt
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install pytest pytest-cov
 
-      - name: 🧪 Vérifier la structure du projet
-        run: python check_structure.py
+      - name: 🧠 Configurer le PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd):$(pwd)/src" >> $GITHUB_ENV
 
-      - name: 🧠 Valider la configuration Render
-        run: python validate_render_config.py
-- name: 🚨 Prévalidation du déploiement
-  run: python predeploy_check.py
+      - name: 🧪 Lancer les tests avec couverture
+        run: |
+          pytest tests/ --cov=itcaa_ai_offline --cov-report=xml --cov-report=term-missing
+
+      - name: 🗂️ Archiver le rapport de couverture
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage-report
+          path: coverage.xml
