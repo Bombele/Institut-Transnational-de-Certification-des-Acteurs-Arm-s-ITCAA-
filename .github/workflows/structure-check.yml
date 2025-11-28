@@ -83,3 +83,8 @@ jobs:
         with:
           name: coverage-report
           path: coverage.xml
+- name: 🎯 Lint avec Black, Isort et Mypy
+  run: |
+    black --check src/ tests/ || (echo "❌ Black a trouvé des erreurs" && exit 1)
+    isort --check-only src/ tests/ || (echo "❌ Isort a trouvé des erreurs" && exit 1)
+    mypy || (echo "❌ Mypy a trouvé des erreurs" && exit 1)
