@@ -8,3 +8,4 @@ export PYTHONPATH=src
 
 echo "🚀 Lancement de l'API ITCAA..."
 python -m uvicorn apps.api.main:app --host 0.0.0.0 --port 8000 --reload
+export PYTHONPATH="$(pwd):$(pwd)/src"
