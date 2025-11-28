@@ -1,11 +1,11 @@
 #!/bin/bash
 
 echo "🔧 Installation des dépendances..."
+pip install --upgrade pip
 pip install -r requirements.txt
 
 echo "🧠 Configuration du PYTHONPATH..."
-export PYTHONPATH=src
+export PYTHONPATH="$(pwd):$(pwd)/src"
 
 echo "🚀 Lancement de l'API ITCAA..."
-python -m uvicorn apps.api.main:app --host 0.0.0.0 --port 8000 --reload
-export PYTHONPATH="${PYTHONPATH}:$(pwd)"
+uvicorn apps.api.main:app --host 0.0.0.0 --port 8000 --reload
