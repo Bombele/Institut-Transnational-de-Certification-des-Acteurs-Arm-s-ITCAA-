@@ -23,17 +23,18 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: 📦 Installer les dépendances IA
+      - name: 📦 Installer les dépendances IA + globales
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
+          pip install -r src/itcaa_ai_offline/requirements-ai.txt
           pip install pytest pytest-cov black isort mypy
 
       - name: 🎯 Lint avec Black, Isort et Mypy
         run: |
-          black --check src/ tests/
-          isort --check-only src/ tests/
-          mypy src/
+          black --check src/ tests/ || (echo "❌ Black a trouvé des erreurs" && exit 1)
+          isort --check-only src/ tests/ || (echo "❌ Isort a trouvé des erreurs" && exit 1)
+          mypy || (echo "❌ Mypy a trouvé des erreurs" && exit 1)
 
       - name: 🧠 Configurer le PYTHONPATH
         run: echo "PYTHONPATH=$(pwd):$(pwd)/src" >> $GITHUB_ENV
