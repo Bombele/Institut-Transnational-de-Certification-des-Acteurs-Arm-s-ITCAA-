@@ -64,3 +64,46 @@ def test_query_specificity():
     assert len(hits) >= 1
     # score doit être entre -1 et 1 (cosinus)
     assert all(-1.0 <= s <= 1.0 for s, _ in hits)
+
+import pytest
+from itcaa_ai_offline.predictor import OfflinePredictor
+from itcaa_ai_offline.schemas import PredictionInput
+
+
+def test_semantic_answer():
+    """
+    Vérifie que le mode semantic retourne une réponse non vide
+    quand on interroge le corpus local.
+    """
+    predictor = OfflinePredictor(mode="semantic")
+    result = predictor.answer("Quels sont les principes du DIH ?")
+    assert isinstance(result, str)
+    assert "Réponse basée sur la base locale" in result or "⚠️" in result
+
+
+def test_semantic_search():
+    """
+    Vérifie que la recherche FAISS retourne une liste de tuples (score, meta).
+    """
+    predictor = OfflinePredictor(mode="semantic")
+    results = predictor.search("humanitaire", k=3)
+    assert isinstance(results, list)
+    if results:  # si corpus non vide
+        score, meta = results[0]
+        assert isinstance(score, float)
+        assert isinstance(meta, dict)
+
+
+def test_classifier_predict():
+    """
+    Vérifie que le mode classifier retourne un PredictionOutput
+    avec label et confiance.
+    """
+    predictor = OfflinePredictor(mode="classifier")
+    dummy_input = PredictionInput(features=[0.1, 0.2, 0.3])  # exemple simple
+    output = predictor.predict(dummy_input)
+    assert hasattr(output, "label")
+    assert hasattr(output, "confidence")
+    assert isinstance(output.label, int)
+    assert isinstance(output.confidence, float)
+    assert 0.0 <= output.confidence <= 1.0
