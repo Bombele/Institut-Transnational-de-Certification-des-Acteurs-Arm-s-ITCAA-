@@ -116,3 +116,18 @@ Chaque jalon technique est documenté comme acte de mémoire et d’empowerment 
 | 📅 Court terme (0–6 mois) | - Stabilisation du backend FastAPI<br>- Validation automatique avec Pydantic<br>- CI/CD complet (Structure, Predeploy, Deploy)<br>- Documentation multilingue | Transparence technique et auditabilité immédiate |
 | 📅 Moyen terme (6–18 mois) | - Module de comptabilité institutionnelle<br>- Intégration des données démographiques<br>- Cartographie interactive GeoJSON<br>- Rapports automatiques annuels | Suivi citoyen et impact démographique |
 | 📅 Long terme (18–36 mois) | - Système de scoring DIH/légitimité/normes internes<br>- API ouverte pour ONG et chercheurs<br>- Rapports multilingues (PDF, HTML)<br>- Reconnaissance internationale | Certification citoyenne reconnue et légitimité mondiale |
+
+# ITCAA – Module IA Hors Ligne
+
+Ce projet implémente un module d’intelligence artificielle hors ligne pour l’ITCAA.  
+Il combine deux approches :
+- 🔍 **Recherche sémantique** avec FAISS et SentenceTransformer (corpus local en `.txt`).
+- 🧮 **Prédiction supervisée** avec un modèle PyTorch (classification).
+
+---
+
+## 🚀 Utilisation
+
+### 1. Construire l’index FAISS
+```bash
+python -m itcaa_ai_offline.index_builder
