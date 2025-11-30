@@ -1,0 +1,35 @@
+name: Auto Index Update
+
+on:
+  push:
+    paths:
+      - "src/itcaa_ai_offline/data/corpus/**"
+
+jobs:
+  rebuild-index:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout
+        uses: actions/checkout@v4
+
+      - name: 🐍 Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: 📦 Install dependencies
+        run: |
+          pip install -r requirements.txt
+          pip install -r src/itcaa_ai_offline/requirements-ai.txt
+
+      - name: 🧠 PYTHONPATH
+        run: echo "PYTHONPATH=$(pwd):$(pwd)/src" >> $GITHUB_ENV
+
+      - name: 🏗️ Auto update index
+        run: ./auto_update_index.sh
+
+      - name: 📊 Upload index artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: offline-ai-index
+          path: src/itcaa_ai_offline/data/index/
